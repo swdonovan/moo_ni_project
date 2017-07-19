@@ -1,0 +1,13 @@
+<%= form_for [:admin, Company.new] do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+
+  <%= f.submit "Create" %>
+<% end %>

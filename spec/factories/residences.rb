@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :residence do
-    name "MyString"
+    name 
     max_capacity 1
   end
 end
