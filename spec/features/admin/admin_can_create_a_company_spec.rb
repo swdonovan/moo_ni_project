@@ -28,8 +28,6 @@ describe "Admin can create a company" do
 
       visit 'admin/companies/new'
 
-
-
       expect(page).to have_content("The page you were looking for doesn't exist")
     end
   end
