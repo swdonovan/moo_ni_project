@@ -21,7 +21,7 @@ describe "User can log in and out of a session" do
 
     click_on("Logout")
     expect(page).to have_content("Successfully logged out")
-    expect(current_path).to eq('/')
+    expect(current_path).to eq('/login')
   end
 
 end

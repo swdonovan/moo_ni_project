@@ -21,7 +21,7 @@ describe "User can create an account" do
 
     click_on("Logout")
     expect(page).to have_content("Successfully logged out")
-    expect(current_path).to eq('/')
+    expect(current_path).to eq('/login')
   end
 
 end
