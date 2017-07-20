@@ -1,0 +1,8 @@
+<h1>All Residences/Pastures</h1>
+
+<% @residences.each do |residence| %>
+  <p><%= link_to residence.name, admin_residence_path(residence) %></p>
+<%end%>
+
+
+<%= link_to "New Residence", new_admin_residence_path %>

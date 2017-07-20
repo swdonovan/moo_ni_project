@@ -1,0 +1,16 @@
+
+<h1>Make a new Residence / Lot / Pasture </h1>
+
+<%= form_for [:admin, Residence.new] do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :max_capacity %>
+  <%= f.text_field :max_capacity %>
+
+  <%= f.label :image_path %>
+  <%= f.text_field :image_path %>
+
+  <%= f.submit "Create Pasture/Lot" %>
+<% end %>

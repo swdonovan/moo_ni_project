@@ -7,11 +7,11 @@ describe "Admin can create a residence/lot/pasture" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
-    visit 'admin/companies/new'
+    visit 'admin/residences/new'
 
 
     fill_in "residence[name]", with: "Cletus's Ranch"
-    fill_in "residence[capacity]", with: 150
+    fill_in "residence[max_capacity]", with: 150
 
     click_on "Create Pasture/Lot"
 
@@ -24,7 +24,7 @@ describe "Admin can create a residence/lot/pasture" do
 
     click_link "Edit"
 
-    expect(current_path).to eq edit_residence_path(Residence.last)
+    expect(current_path).to eq edit_admin_residence_path(Residence.last)
   end
 
   describe "User can not create a company" do
