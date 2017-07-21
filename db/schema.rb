@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20170721135624) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "occupancy", default: 0
+    t.string "image_path"
   end
 
   create_table "users", force: :cascade do |t|

@@ -6,7 +6,7 @@ describe "Admin can visit Feeder Cows Index and See All" do
                         role: 1)
 
     feeder_cow = create(:feeder_cow)
-    feeder_cow_two = creat(:feeder_cow)
+    feeder_cow_two = create(:feeder_cow)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
@@ -37,7 +37,7 @@ describe "Admin can visit Feeder Cows Index and See All" do
     scenario "instead of seeing edit and delete they see lot and cows" do
       @user = User.create(name: "Cletus", email: "cl@etus", password: "centrelli")
       feeder_cow = create(:feeder_cow)
-      feeder_cow_two = creat(:feeder_cow)
+      feeder_cow_two = create(:feeder_cow)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
