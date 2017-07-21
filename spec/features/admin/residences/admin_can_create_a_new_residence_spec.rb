@@ -27,6 +27,20 @@ describe "Admin can create a residence/lot/pasture" do
     expect(current_path).to eq edit_admin_residence_path(Residence.last)
   end
 
+  describe "User can not create a residence" do
+    scenario "for residence creation" do
+      @user = User.create(name: "Cletus", email: "cl@etus", password: "centrelli")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+
+      visit 'admin/residences/new'
+
+
+
+      expect(page).to have_content("The page you were looking for doesn't exist")
+    end
+  end
+
   describe "User can not create a company" do
     scenario "for company creation" do
       @user = User.create(name: "Cletus", email: "cl@etus", password: "centrelli")

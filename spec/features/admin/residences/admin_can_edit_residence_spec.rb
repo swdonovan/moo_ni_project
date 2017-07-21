@@ -6,7 +6,7 @@ describe "Admin can edit a Residence" do
                         role: 1)
 
     residence_one = create(:residence)
-    residence_two = create(:residence)
+    # residence_two = create(:residence)
 
 
 

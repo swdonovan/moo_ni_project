@@ -37,6 +37,14 @@ class Admin::ResidencesController < Admin::AdminController
     end
   end
 
+  def destroy
+    residence = Residence.find(params[:id])
+    residence.destroy
+
+    flash[:success] = "#{residence.name} was successfully deleted!"
+    redirect_to admin_residences_path
+  end
+
   private
 
   def residence_params
