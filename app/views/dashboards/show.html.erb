@@ -1,109 +1,98 @@
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-  <h1 class="page-header">Dashboard</h1>
+<h1 class="dashboard">Dashboard</h1>
+<section class="soybean">
+  <img class="soybean_pic" src="" alt="a_picture_of_soybeans">
+  <h3 class="soybean_title">Soybean Prices API</h3>
+  <p class="soybean_content">Something something</p>
+</section>
+<section class="corn">
+  <img class="corn_pic" src="" alt="a_picture_of_corn">
+  <h3 class="corn_title">Corn Prices API</h3>
+  <p class="corn_content">Something something</p>
+</section><section class="cattle">
+  <img class="cattle_pic" src="" alt="a_picture_of_moomoo">
+  <h3 class="cow_title">Live Cattle Prices API Prices API</h3>
+  <p class="cow_content">Something something</p>
+</section><section class="forecast">
+  <img class="storm_pic" src="" alt="a_picture_of_a_storm">
+  <h3 class="forecast_title">Weather_API</h3>
+  <p class="forecast_content">Something something</p>
+</section>
 
-  <div class="row placeholders">
-    <div class="col-xs-6 col-sm-3 placeholder">
-      <img src="https://thumbs.dreamstime.com/z/agricultural-concept-soybean-dollar-money-heap-soy-beans-banknote-56125238.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-      <h4>Soybean Prices--API</h4>
-      <span class="text-muted">##Something to do with a Date##</span>
-    </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-      <img src="https://thumb1.shutterstock.com/display_pic_with_logo/3141683/507987913/stock-photo-corn-kernels-forming-dollar-symbol-corn-market-corn-kernels-selective-focus-and-shallow-depth-of-507987913.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-      <h4>Corn Prices--API</h4>
-      <span class="text-muted">##Something to do with a Date##</span>
-    </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-      <img src="https://thumbs.dreamstime.com/z/cow-cartoon-character-dollar-sign-d-rendered-illustration-caw-doller-69111027.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-      <h4>Live Cattle Prices--API</h4>
-      <span class="text-muted">##Something to do with a Date##</span>
-    </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-      <img src="http://www.noaa.gov/sites/default/files/styles/crop_394x394/public/thumbnails/image/FocusArea__Weather-02.jpg?itok=fO6wu2A8" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-      <h4>Todays Forecast--API</h4>
-      <span class="text-muted">##Something to do with a Date##</span>
-    </div>
-  </div>
-
-  <h2 class="sub-header">Recently Updated Cows</h2>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
+<section class="tables">
+  <article class="updated_cows">
+    <h2 class="updated_cow_header">Updated Cow Table</h2>
+    <table>
+      <colgroup span="5"></colgroup>
         <tr>
           <th>Cow Number</th>
           <th>Description</th>
           <th>Weight</th>
           <th>Lot Number</th>
-          <th>% Gain From arrival</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1,001</td>
-          <td>Lorem</td>
-          <td>ipsum</td>
-          <td>dolor</td>
-          <td>sit</td>
+          <th>Weight % Gain from Arrival</th>
         </tr>
         <tr>
-          <td>1,002</td>
-          <td>amet</td>
-          <td>consectetur</td>
-          <td>adipiscing</td>
-          <td>elit</td>
+          <td><%#= FeederCow.first.tag_number %></td>
+          <td><%#= FeederCow.first.created_at %></td>
+          <td><%#= FeederCow.first.feeder_weight.weight %></td>
+          <td><%#= FeederCow.first.residences.name %></td>
+          <td>5%</td>
         </tr>
         <tr>
-          <td>1,003</td>
-          <td>Integer</td>
-          <td>nec</td>
-          <td>odio</td>
-          <td>Praesent</td>
+          <td><%#= FeederCow.second.tag_number %></td>
+          <td><%#= FeederCow.second.created_at %></td>
+          <td><%#= FeederCow.second.feeder_weight.weight %></td>
+          <td><%#= FeederCow.second.residences.name %></td>
+          <td>10%</td>
         </tr>
-      </tbody>
+        <tr>
+          <td><%#= FeederCow.third.tag_number %></td>
+          <td><%#= FeederCow.third.created_at %></td>
+          <td><%#= FeederCow.third.feeder_weight.weight %></td>
+          <td><%#= FeederCow.third.residences.name %></td>
+          <td>5%</td>
+        </tr>
     </table>
-  </div>
+  </article>
 
-  <h2 class="sub-header">Highest Weight Gains</h2>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
+  <article class="weight_gains">
+    <h2 class="weight_gain_header">% of Weight Gain Table</h2>
+    <table>
+      <colgroup span="5"></colgroup>
         <tr>
           <th>Cow Number</th>
           <th>Description</th>
           <th>Weight</th>
           <th>Lot Number</th>
-          <th>% Gain From arrival</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1,001</td>
-          <td>Lorem</td>
-          <td>ipsum</td>
-          <td>dolor</td>
-          <td>sit</td>
+          <th>Weight % Gain from Arrival</th>
         </tr>
         <tr>
-          <td>1,002</td>
-          <td>amet</td>
-          <td>consectetur</td>
-          <td>adipiscing</td>
-          <td>elit</td>
+          <td><%#= FeederCow.first.tag_number %></td>
+          <td><%#= FeederCow.first.created_at %></td>
+          <td><%#= FeederCow.first.feeder_weight.weight %></td>
+          <td><%#= FeederCow.first.residences.name %></td>
+          <td>5%</td>
         </tr>
         <tr>
-          <td>1,003</td>
-          <td>Integer</td>
-          <td>nec</td>
-          <td>odio</td>
-          <td>Praesent</td>
+          <td><%#= FeederCow.second.tag_number %></td>
+          <td><%#= FeederCow.second.created_at %></td>
+          <td><%#= FeederCow.second.feeder_weight.weight %></td>
+          <td><%#= FeederCow.second.residences.name %></td>
+          <td>10%</td>
         </tr>
-      </tbody>
+        <tr>
+          <td><%#= FeederCow.third.tag_number %></td>
+          <td><%#= FeederCow.third.created_at %></td>
+          <td><%#= FeederCow.third.feeder_weight.weight %></td>
+          <td><%#= FeederCow.third.residences.name %></td>
+          <td>5%</td>
+        </tr>
     </table>
-  </div>
+  </article>
 
-  <h2 class="sub-header">Recently Calved</h2>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
+  <article class="calved_cows">
+    <h2 class="calved_cows_header">Calved Cow Table</h2>
+    <table>
+      <colgroup span="5"></colgroup>
         <tr>
           <th>Cow Number</th>
           <th>Description</th>
@@ -111,30 +100,27 @@
           <th>Lot Number</th>
           <th>Calving Date</th>
         </tr>
-      </thead>
-      <tbody>
         <tr>
-          <td>1,001</td>
-          <td>Lorem</td>
-          <td>ipsum</td>
-          <td>dolor</td>
-          <td>sit</td>
+          <td><%#= FeederCow.first.tag_number %></td>
+          <td><%#= FeederCow.first.created_at %></td>
+          <td><%#= FeederCow.first.feeder_weight.weight %></td>
+          <td><%#= FeederCow.first.residences.name %></td>
+          <td>5%</td>
         </tr>
         <tr>
-          <td>1,002</td>
-          <td>amet</td>
-          <td>consectetur</td>
-          <td>adipiscing</td>
-          <td>elit</td>
+          <td><%#= FeederCow.second.tag_number %></td>
+          <td><%#= FeederCow.second.created_at %></td>
+          <td><%#= FeederCow.second.feeder_weight.weight %></td>
+          <td><%#= FeederCow.second.residences.name %></td>
+          <td>10%</td>
         </tr>
         <tr>
-          <td>1,003</td>
-          <td>Integer</td>
-          <td>nec</td>
-          <td>odio</td>
-          <td>Praesent</td>
+          <td><%#= FeederCow.third.tag_number %></td>
+          <td><%#= FeederCow.third.created_at %></td>
+          <td><%#= FeederCow.third.feeder_weight.weight %></td>
+          <td><%#= FeederCow.third.residences.name %></td>
+          <td>5%</td>
         </tr>
-      </tbody>
     </table>
-  </div>
-</div>
+  </article>
+</section>
