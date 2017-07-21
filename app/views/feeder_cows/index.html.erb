@@ -1,0 +1,6 @@
+<h1>Feeder Cows</h1>
+
+<% @feeder_cows.each do |feeder| %>
+  <%= feeder.tag_number %>
+  <%= feeder.residence.name %><br />
+<% end %>

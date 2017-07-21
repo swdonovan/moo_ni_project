@@ -1,16 +1,15 @@
 class Admin::FeederCowsController < Admin::AdminController
+  before_action :set_transaction, only: :create
 
-  def index
-    @feeder_cows = FeederCow.all
-  end
 
   def new
     @feeder_cow = FeederCow.new
   end
 
   def create
-    @feeder_cow = FeederCow.new(feeder_params)
+    @feeder_cow = @transaction.feeder_cows.new(feeder_params)
     if @feeder_cow.save
+      weight = FeederWeight.create(feeder_cow_id: @feeder_cow.id, weight: params[:weight]).incoming!
       flash[:notice] = "Feeder Cow #{@feeder_cow.tag_number} created"
       redirect_to feeder_cows_path
     else
@@ -33,9 +32,14 @@ class Admin::FeederCowsController < Admin::AdminController
 
   private
 
+  def set_transaction
+    @transaction = RanchTransaction.find(params[:transaction_id])
+  end
+
   def feeder_params
-    byebug
-    params.require(:feeder_cow).permit(:tag_number, :residence_id, :weight, :transaction_id, :life_status)
+    @params = params.permit(:tag_number, :residence_id, :life_status)
+    @params[:life_status] = @params[:life_status].to_i
+    @params
   end
 
   def set_feeder_cow_id

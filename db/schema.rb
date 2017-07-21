@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720205524) do
+ActiveRecord::Schema.define(version: 20170721135624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,22 +50,22 @@ ActiveRecord::Schema.define(version: 20170720205524) do
     t.index ["feeder_cow_id"], name: "index_feeder_weights_on_feeder_cow_id"
   end
 
-  create_table "residences", force: :cascade do |t|
-    t.string "name"
-    t.integer "max_capacity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "occupancy", default: 0
-  end
-
-  create_table "transactions", force: :cascade do |t|
+  create_table "ranch_transactions", force: :cascade do |t|
     t.bigint "company_id"
     t.date "date"
     t.decimal "amount"
     t.integer "transaction_type", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_transactions_on_company_id"
+    t.index ["company_id"], name: "index_ranch_transactions_on_company_id"
+  end
+
+  create_table "residences", force: :cascade do |t|
+    t.string "name"
+    t.integer "max_capacity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "occupancy", default: 0
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 20170720205524) do
   end
 
   add_foreign_key "feeder_cow_transactions", "feeder_cows"
-  add_foreign_key "feeder_cow_transactions", "transactions"
+  add_foreign_key "feeder_cow_transactions", "ranch_transactions", column: "transaction_id"
   add_foreign_key "feeder_cows", "residences"
   add_foreign_key "feeder_weights", "feeder_cows"
-  add_foreign_key "transactions", "companies"
+  add_foreign_key "ranch_transactions", "companies"
 end
