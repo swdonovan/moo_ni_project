@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720152630) do
+ActiveRecord::Schema.define(version: 20170721135624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,11 +23,49 @@ ActiveRecord::Schema.define(version: 20170720152630) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "feeder_cow_transactions", force: :cascade do |t|
+    t.bigint "transaction_id"
+    t.bigint "feeder_cow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feeder_cow_id"], name: "index_feeder_cow_transactions_on_feeder_cow_id"
+    t.index ["transaction_id"], name: "index_feeder_cow_transactions_on_transaction_id"
+  end
+
+  create_table "feeder_cows", force: :cascade do |t|
+    t.integer "tag_number"
+    t.bigint "residence_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "life_status", default: 0
+    t.index ["residence_id"], name: "index_feeder_cows_on_residence_id"
+  end
+
+  create_table "feeder_weights", force: :cascade do |t|
+    t.bigint "feeder_cow_id"
+    t.integer "weight"
+    t.integer "weight_type", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feeder_cow_id"], name: "index_feeder_weights_on_feeder_cow_id"
+  end
+
+  create_table "ranch_transactions", force: :cascade do |t|
+    t.bigint "company_id"
+    t.date "date"
+    t.decimal "amount"
+    t.integer "transaction_type", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_ranch_transactions_on_company_id"
+  end
+
   create_table "residences", force: :cascade do |t|
     t.string "name"
     t.integer "max_capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "occupancy", default: 0
     t.string "image_path"
   end
 
@@ -40,4 +78,9 @@ ActiveRecord::Schema.define(version: 20170720152630) do
     t.integer "role", default: 0
   end
 
+  add_foreign_key "feeder_cow_transactions", "feeder_cows"
+  add_foreign_key "feeder_cow_transactions", "ranch_transactions", column: "transaction_id"
+  add_foreign_key "feeder_cows", "residences"
+  add_foreign_key "feeder_weights", "feeder_cows"
+  add_foreign_key "ranch_transactions", "companies"
 end
