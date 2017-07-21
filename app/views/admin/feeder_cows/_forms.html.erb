@@ -1,4 +1,4 @@
-<%= form_tag(controller: "feeder_cows", action: :create) do %>
+<%= form_tag(controller: "admin/feeder_cows", action: :create) do %>
 
   <%= label_tag "Tag Number" %>
   <%= number_field_tag :tag_number %><br />
@@ -10,10 +10,10 @@
   <%= select_tag :residence_id, options_from_collection_for_select(Residence.empty, "id", "name") %><br />
 
   <%= label_tag "Find Transaction" %>
-  <%= select_tag :transaction_id, options_from_collection_for_select(Transaction.last(10), "id", "amount"), include_blank: true %><br />
+  <%= select_tag :transaction_id, options_from_collection_for_select(RanchTransaction.last(10), "id", "amount"), include_blank: true %><br />
 
   <%= label_tag "Check if Alive" %>
   <%= check_box_tag :life_status %><br />
 
-  <%= submit_tag %>
+  <%= submit_tag "Add New Cow"%>
 <% end %>

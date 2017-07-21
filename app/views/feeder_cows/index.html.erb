@@ -4,3 +4,7 @@
   <%= feeder.tag_number %>
   <%= feeder.residence.name %><br />
 <% end %>
+
+<% if current_admin %>
+  <%= render partial: 'admin/feeder_cows/forms' %>
+<% end %>

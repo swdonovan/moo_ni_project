@@ -4,24 +4,27 @@ describe "Admin can visit Feeder Cows Index and See All" do
   scenario "for admin there are additional links available" do
     @admin = User.create(name: "Cletus", email: "cl@etus", password: "centrelli",
                         role: 1)
+    lot = create(:residence)
+    trans = create(:ranch_transaction)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
     visit '/feeder_cows'
 
-    click_on "Add New Cow/s"
-
-    expect(current_path).to eq new_admin_feeder_cow
-
     expect(page).to have_field "Tag Number"
     fill_in "feeder_cow[:tag_number]", with: 3
 
     expect(page).to have_drop_down "Residence"
-    fill_in "feeder_cow[:residence]", with: "Bull Pasture"
+    fill_in "feeder_cow[:residence_id]", with: lot
 
+    expect(page).to have_field "Weight"
+    fill_in "feeder_cow[:weight]", with: 1200
 
-    expect(page).to have_content feeder_cow_two.tag_number
-    expect(page).to have_link "#{feeder_cow_two.residence.name}"
+    expect(page).to have_field "Find Transaction"
+    fill_in "feeder_cow[:transaction_id]", with: trans
+
+    click_on "Add New Cow"
+
     expect(page).to have_link "Delete"
     expect(page).to have_link "Edit"
 
@@ -43,7 +46,7 @@ describe "Admin can visit Feeder Cows Index and See All" do
     scenario "instead of seeing edit and delete they see lot and cows" do
       @user = User.create(name: "Cletus", email: "cl@etus", password: "centrelli")
       feeder_cow = create(:feeder_cow)
-      feeder_cow_two = creat(:feeder_cow)
+      feeder_cow_two = create(:feeder_cow)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
