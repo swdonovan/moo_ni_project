@@ -8,18 +8,18 @@ describe "Admin can uncommission a residence" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
     residence_one = create(:residence)
-    residence_two = create(:residence)
+    residence_two = Residence.create(name: "Bob", max_capacity: 1500)
 
     expect(Residence.count).to eq(2)
-    expect(residence_one.name).to eq("Billy Joe")
-    expect(residence_two.name).to eq("Dale")
+    expect(residence_one.name).to eq("Dale")
+    expect(residence_two.name).to eq("Bob")
 
     visit admin_residence_path(residence_two)
     click_link("Delete")
 
     expect(Residence.count).to eq(1)
-    expect(page).to have_content("Billy Joe")
-    expect(page).to have_content("Dale was successfully deleted")
+    expect(page).to have_content("Dale")
+    expect(page).to have_content("Bob was successfully deleted")
   end
 end
 

@@ -21,9 +21,14 @@ Rails.application.routes.draw do
     resources :companies
     resources :residences
     resources :ranch_transactions
+<<<<<<< HEAD
     resources :feeder_cows, except: [:show, :index]
     resources :calving_cows, except: [:show, :index] do
       resources :calves, except: [:show, :index]
     end
+=======
+    resources :feeder_cows, except: :show
+    resources :calving_cows, except: :show
+>>>>>>> master
   end
 end

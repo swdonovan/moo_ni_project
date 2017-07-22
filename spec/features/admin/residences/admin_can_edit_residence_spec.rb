@@ -5,15 +5,15 @@ describe "Admin can edit a Residence" do
     @admin = User.create(name: "Cletus", email: "cl@etus", password: "centrelli",
                         role: 1)
 
-    residence_one = create(:residence)
+    residence_one = Residence.create name: "Babs", max_capacity: 12
     # residence_two = create(:residence)
 
 
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
-    expect(residence_one.name).to eq("Billy Joe")
-    expect(residence_one.max_capacity).to eq(1)
+    expect(residence_one.name).to eq("Babs")
+    expect(residence_one.max_capacity).to eq(12)
 
     visit edit_admin_residence_path(Residence.first)
 
