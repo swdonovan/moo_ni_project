@@ -1,7 +1,0 @@
-<h1>This pasture</h1>
-
-<h2><%= @residence.name %></h2>
-<h3>Capacity: <%= @residence.max_capacity %></h3>
-<p> <%= link_to "Home", root_path %> </p>
-<p> <%= link_to "Edit",  edit_admin_residence_path(@residence)%></p>
-<p><%= link_to "Delete", admin_residence_path(@residence),  method: :delete %></p>
