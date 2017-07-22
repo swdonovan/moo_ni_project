@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :companies
     resources :residences
-    resources :transactions
+    resources :ranch_transactions
     resources :feeder_cows, except: [:show, :index]
     resources :calving_cows, except: [:show, :index] do
       resources :calves, except: [:show, :index]
