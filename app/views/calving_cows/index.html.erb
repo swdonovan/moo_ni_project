@@ -1,10 +1,17 @@
 <h1>Calving Cows</h1>
 
-<% @calving_cows.each do |cow| %>
-  <%= cow.tag_number %>
-  <%= cow.residence.name %><br />
-<% end %>
+<h3>
+  <% @calving_cows.each do |cow| %>
+    Cow - <%= cow.tag_number %>
+    Lot - <%= cow.residence.name %><br />
+    <% if current_admin %>
+        <p href="#">Link For Adding Calf</p>
+      <% end %>
+  <% end %>
+</h3>
 
-<% if current_admin %>
-  <%= render partial: 'admin/calving_cows/forms' %>
-<% end %>
+<small>
+  <% if current_admin %>
+    <%= render partial: 'admin/calving_cows/forms' %>
+  <% end %>
+</small>
