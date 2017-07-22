@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721135624) do
+ActiveRecord::Schema.define(version: 20170722200301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "calves", force: :cascade do |t|
+    t.integer "tag_number"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "calving_cow_transactions", force: :cascade do |t|
+    t.bigint "ranch_transaction_id"
+    t.bigint "calving_cow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["calving_cow_id"], name: "index_calving_cow_transactions_on_calving_cow_id"
+    t.index ["ranch_transaction_id"], name: "index_calving_cow_transactions_on_ranch_transaction_id"
+  end
+
+  create_table "calving_cow_weights", force: :cascade do |t|
+    t.bigint "calving_cow_id"
+    t.integer "weight"
+    t.integer "weight_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["calving_cow_id"], name: "index_calving_cow_weights_on_calving_cow_id"
+  end
+
+  create_table "calving_cows", force: :cascade do |t|
+    t.integer "tag_number"
+    t.bigint "residence_id"
+    t.integer "life_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["residence_id"], name: "index_calving_cows_on_residence_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -78,6 +112,10 @@ ActiveRecord::Schema.define(version: 20170721135624) do
     t.integer "role", default: 0
   end
 
+  add_foreign_key "calving_cow_transactions", "calving_cows"
+  add_foreign_key "calving_cow_transactions", "ranch_transactions"
+  add_foreign_key "calving_cow_weights", "calving_cows"
+  add_foreign_key "calving_cows", "residences"
   add_foreign_key "feeder_cow_transactions", "feeder_cows"
   add_foreign_key "feeder_cow_transactions", "ranch_transactions", column: "transaction_id"
   add_foreign_key "feeder_cows", "residences"
