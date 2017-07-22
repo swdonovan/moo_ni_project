@@ -1,0 +1,10 @@
+<h1>Calving Cows</h1>
+
+<% @calving_cows.each do |cow| %>
+  <%= cow.tag_number %>
+  <%= cow.residence.name %><br />
+<% end %>
+
+<% if current_admin %>
+  <%= render partial: 'admin/calving_cows/forms' %>
+<% end %>

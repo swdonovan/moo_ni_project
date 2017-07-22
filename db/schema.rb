@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170722144021) do
+ActiveRecord::Schema.define(version: 20170722200301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "calves", force: :cascade do |t|
+    t.integer "tag_number"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "calving_cow_transactions", force: :cascade do |t|
     t.bigint "ranch_transaction_id"
