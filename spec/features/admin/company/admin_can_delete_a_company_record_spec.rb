@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "Admin can edit a Company" do
-  scenario "a user can edit a company" do
+describe "Admin can delete a Company" do
+  scenario "from it's records" do
     @admin = User.create(name: "Cletus", email: "cl@etus", password: "centrelli",
                         role: 1)
 
@@ -10,27 +10,24 @@ describe "Admin can edit a Company" do
     company_one = create(:company)
     company_two = create(:company)
 
-    visit edit_admin_company_path(company_one)
+    expect(Company.count).to eq(2)
 
-    fill_in "company[name]", with: "EA Sports"
-    fill_in "company[state]", with: "Montana"
+    visit admin_company_path(company_one)
+    click_link("Delete")
 
-    click_button "Update"
-
-    expect(current_path).to eq admin_company_path(company_one)
-    expect(page).to have_content("EA Sports")
-    expect(Company.first.state).to eq("Montana")
+    expect(current_path).to eq(admin_companies_path)
+    expect(Company.count).to eq(1)
   end
 
-  describe "User can not edit a company" do
-    scenario "for editing a company" do
+  describe "User can not delete a company" do
+    scenario "from admin's records" do
       @user = User.create(name: "Cletus", email: "cl@etus", password: "centrelli")
       company_one = create(:company)
       company_two = create(:company)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
-      visit edit_admin_company_path(company_one)
+      visit admin_company_path(company_one)
 
       expect(page).to have_content("The page you were looking for doesn't exist")
     end
