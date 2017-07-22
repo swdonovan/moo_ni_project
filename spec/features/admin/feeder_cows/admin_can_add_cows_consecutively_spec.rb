@@ -11,16 +11,16 @@ describe "Admin can visit Feeder Cows Index and See All" do
 
     visit '/feeder_cows'
 
-    expect(page).to have_content "Tag number"
+    expect(page).to have_field "Tag Number"
     fill_in "feeder_cow[:tag_number]", with: 3
- 
+
     expect(page).to have_drop_down "Residence"
     fill_in "feeder_cow[:residence_id]", with: lot
 
-    expect(page).to have_content "Weight"
+    expect(page).to have_field "Weight"
     fill_in "feeder_cow[:weight]", with: 1200
 
-    expect(page).to have_content "Find Transaction"
+    expect(page).to have_field "Find Transaction"
     fill_in "feeder_cow[:transaction_id]", with: trans
 
     click_on "Add New Cow"
