@@ -1,0 +1,2 @@
+class CalvingCowsController < ApplicationController
+end
