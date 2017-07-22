@@ -1,3 +1,10 @@
 <h1>Hello Motha F****rs</h1>
 
+
+<p><%= @company.name %></p>
+<h3><%= @company.city %> </h3>
+<h3><%= @company.state %> </h3>
+
+<%= link_to "Edit", edit_admin_company_path(@company)%>
+<p><%= link_to "Delete", admin_company_path(@company), method: :delete%></p>
 <%= link_to "Home", root_path %>
