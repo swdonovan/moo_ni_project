@@ -8,5 +8,4 @@ class RanchTransaction < ApplicationRecord
   belongs_to :company
 
   enum transaction_type: [:purchase, :sell]
-
 end
