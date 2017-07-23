@@ -1,0 +1,13 @@
+<%= form_for [:admin, @ranch_transaction] do |f| %>
+
+  <%= f.label "Company" %>
+  <%= f.collection_select(:company_id, @companies, :id, :name)%> <br />
+
+  <%= f.label :amount %>
+  <%= f.text_field :amount %>
+
+  <%= f.label :transaction_type %>
+  <%= f.select(:transaction_type, RanchTransaction.transaction_types.keys.map {|transaction_type| [transaction_type.titleize, transaction_type]})%> <br>
+
+  <%= f.submit "Create"%>
+<% end %>
