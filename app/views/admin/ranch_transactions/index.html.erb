@@ -1,0 +1,6 @@
+<h1>All ranch transactions</h1>
+
+<% @ranch_transactions.each do |ranch_transaction| %>
+<p><%= ranch_transaction.company.name %></p>
+<li>$<%= ranch_transaction.amount.to_f.round(2) %> <%= ranch_transaction.transaction_type %></li>
+<% end %>
