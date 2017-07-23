@@ -101,8 +101,8 @@ ActiveRecord::Schema.define(version: 20170723134654) do
     t.integer "max_capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "occupancy", default: 0
     t.string "image_path"
+    t.integer "occupancy", default: 0
   end
 
   create_table "users", force: :cascade do |t|

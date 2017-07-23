@@ -1,9 +1,12 @@
 <h1>All ranch transactions</h1>
 <%= link_to "New Ranch transaction", new_admin_ranch_transaction_path %>
+<br><br>
 
 <% @ranch_transactions.each do |ranch_transaction| %>
 <p><%= ranch_transaction.company.name %></p>
 <li>$<%= ranch_transaction.amount.to_f.round(2) %> <%= ranch_transaction.transaction_type %></li>
 <%= link_to "Edit", edit_admin_ranch_transaction_path(ranch_transaction) %>
 <%= link_to "Delete", admin_ranch_transaction_path(ranch_transaction), method: :delete  %>
+<br><br>
 <% end %>
+<br><br>
