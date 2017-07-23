@@ -1,5 +1,6 @@
 class Admin::FeederCowsController < Admin::AdminController
   before_action :set_transaction, only: :create
+  before_action :set_feeder_cow_id, only: [:show, :destroy, :edit]
 
 
   def new
@@ -24,6 +25,7 @@ class Admin::FeederCowsController < Admin::AdminController
 
   def destroy
     @feeder_cow.destroy
+    redirect_to feeder_cows_path
   end
 
   def dead
