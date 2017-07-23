@@ -2,7 +2,6 @@
 
 <% @feeder_cows.each do |feeder| %>
   <%= feeder.tag_number %>
-  Weight -- <%= feeder.feeder_weights.first.weight %>
   Lot -- <%= link_to feeder.residence.name, admin_residence_path(feeder.residence) %>
   <% if current_admin %>
     <small><%= link_to "Delete", admin_feeder_cow_path(feeder), method: :delete %></small>
