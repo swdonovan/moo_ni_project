@@ -11,18 +11,15 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :feeder_cows, only: :index
   resources :calving_cows, only: :index
-  resources :calves, only: :index
+  resources :calves, only: [:index, :show]
 
-  resources :calving_cows, only: :show do
-    resources :calves, only: :show
-  end
 
   namespace :admin do
     resources :companies
     resources :residences
     resources :ranch_transactions
     resources :feeder_cows, except: [:show, :index]
-    resources :calving_cows, except: [:show, :index] do
+    resources :calving_cows, except: :index do
       resources :calves, except: [:show, :index]
     end
 

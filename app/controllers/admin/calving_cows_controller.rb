@@ -1,6 +1,10 @@
 class Admin::CalvingCowsController < Admin::AdminController
   before_action :set_transaction, only: :create
 
+  def show
+    @cow = CalvingCow.find(params[:id])
+    @calf = Calf.new
+  end
 
   def new
     @calving_cow = CalvingCow.new
