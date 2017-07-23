@@ -1,2 +1,10 @@
 <h1>Cow # <%= @cow.tag_number %></h1>
+
+<p><%= @cow.calving_cow_weights.last.weight %></p>
+
 <%= render partial: 'calves/form' %>
+
+<% @cow.calves.each do |calf| %>
+  <%= calf.description %>
+  <%= calf.date_created %>
+<% end %>
