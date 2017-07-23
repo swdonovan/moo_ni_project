@@ -7,4 +7,14 @@ class FeederCow < ApplicationRecord
   belongs_to :residence
 
   enum life_status: [:alive, :dead]
+
+
+  def weight_gain
+    @all.group(:id).
+  end
+
+  def self.percent_find(weights)
+    difference = ((weights.working.last.weight) - (weights.incoming.first.weight))
+    percent = (difference.to_f / weights.incoming.first.weight.to_f)
+  end
 end

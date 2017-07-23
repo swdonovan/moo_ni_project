@@ -75,11 +75,11 @@
     </thead>
     <tbody>
       <tr>
-        <td>1,001</td>
-        <td>Lorem</td>
-        <td>ipsum</td>
-        <td>dolor</td>
-        <td>sit</td>
+        <td><%= FeederCow.order(:updated_at).last %></td>
+        <td>Black White Face</td>
+        <td><%= FeederCow.first.feeder_weights.last %></td>
+        <td><%= FeederCow.first.residence.name %></td>
+        <td><%= FeederCow.weight_gain %></td>
       </tr>
       <tr>
         <td>1,002</td>

@@ -3,5 +3,5 @@ class Company < ApplicationRecord
   validates :city, presence: true
   validates :state, presence: true
 
-  has_many :transactions
+  has_many :ranch_transactions
 end
