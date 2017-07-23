@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170722200301) do
+ActiveRecord::Schema.define(version: 20170723134654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20170722200301) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "calving_cow_id"
+    t.index ["calving_cow_id"], name: "index_calves_on_calving_cow_id"
   end
 
   create_table "calving_cow_transactions", force: :cascade do |t|
@@ -99,8 +101,8 @@ ActiveRecord::Schema.define(version: 20170722200301) do
     t.integer "max_capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_path"
     t.integer "occupancy", default: 0
+    t.string "image_path"
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,6 +114,7 @@ ActiveRecord::Schema.define(version: 20170722200301) do
     t.integer "role", default: 0
   end
 
+  add_foreign_key "calves", "calving_cows"
   add_foreign_key "calving_cow_transactions", "calving_cows"
   add_foreign_key "calving_cow_transactions", "ranch_transactions"
   add_foreign_key "calving_cow_weights", "calving_cows"

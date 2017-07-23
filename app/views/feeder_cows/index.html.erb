@@ -1,10 +1,10 @@
 <h1>Feeder Cows</h1>
 
-<% @feeder_cows.each do |feeder| %>
+<h4><% @feeder_cows.each do |feeder| %>
   <%= feeder.tag_number %>
   <%= feeder.residence.name %><br />
 <% end %>
 
 <% if current_admin %>
   <%= render partial: 'admin/feeder_cows/forms' %>
-<% end %>
+<% end %></h4>

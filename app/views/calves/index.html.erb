@@ -1,7 +1,3 @@
-<h1>Calves for <%= Date.year %></h1>
+<h1>Calves for <%= Date.today.year %></h1>
 
-<% Calf.all.each do |calf| %>
-  Tag = <%= calf.tag_number %>
-  Mom = <%= calf.calving_cow.tag_number %>
-  
-<% end %>
+<%= render partial: 'each_calf' %>

@@ -1,0 +1,6 @@
+<% @calves.each do |calf| %>
+  Tag -- <%= calf.tag_number %>
+  Mom Cow -- <%= calf.calving_cow.tag_number %>
+  Description -- <%= calf.description %>
+
+<% end %>

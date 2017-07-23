@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/users', to: 'users#create'
 
+  get '/calves/year/:year', to: 'calves#year'
+
   resources :users, only: :show
   resources :feeder_cows, only: :index
   resources :calving_cows, only: :index
