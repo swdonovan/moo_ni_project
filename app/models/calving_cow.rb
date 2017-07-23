@@ -1,5 +1,5 @@
 class CalvingCow < ApplicationRecord
-  has_many :calfs
+  has_many :calves
 
   belongs_to :residence
 
