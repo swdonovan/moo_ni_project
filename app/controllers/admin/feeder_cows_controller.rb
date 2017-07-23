@@ -1,6 +1,6 @@
 class Admin::FeederCowsController < Admin::AdminController
   before_action :set_transaction, only: :create
-
+  before_action :set_feeder_cow_id, only: [:destroy, :edit]
 
   def new
     @feeder_cow = FeederCow.new
@@ -23,7 +23,11 @@ class Admin::FeederCowsController < Admin::AdminController
   end
 
   def destroy
+    @weight = FeederWeight.where(feeder_cow_id: @feeder_cow)
+    @weight.delete_all
     @feeder_cow.destroy
+    flash[:notice] = "#{@feeder_cow} Deleted"
+    redirect_to feeder_cows_path
   end
 
   def dead

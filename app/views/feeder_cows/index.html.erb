@@ -1,10 +1,14 @@
 <h1>Feeder Cows</h1>
 
-<h4><% @feeder_cows.each do |feeder| %>
+<% @feeder_cows.each do |feeder| %>
+<% if current_admin %>
+<small><%= link_to "Delete", admin_feeder_cow_path(feeder), method: :delete %></small>
+<small><%= link_to "Edit", edit_admin_feeder_cow_path(feeder) %></small>
+<% end %>
   <%= feeder.tag_number %>
-  <%= feeder.residence.name %><br />
+  <%= link_to feeder.residence.name, admin_residence_path(feeder.residence) %><br />
 <% end %>
 
 <% if current_admin %>
   <%= render partial: 'admin/feeder_cows/forms' %>
-<% end %></h4>
+<% end %>

@@ -11,8 +11,8 @@ describe "Admin can visit Feeder Cows Index and See All" do
 
     visit '/feeder_cows'
 
-    expect(page).to have_field "Tag Number"
-    fill_in "feeder_cow[:tag_number]", with: 3
+    expect(page).to have_content "Tag number"
+    fill_in "feeder_cow[:Tag_number]", with: 3
 
     expect(page).to have_drop_down "Residence"
     fill_in "feeder_cow[:residence_id]", with: lot
@@ -54,9 +54,9 @@ describe "Admin can visit Feeder Cows Index and See All" do
 
       expect(page).to have_link("#{feeder_cow.residence.name}")
       expect(page).to have_content("#{feeder_cow.tag_number}")
-      expect(page).to not_have "Edit"
-      expect(page).to not_have "Delete"
-      expect(page).to not_have "Add Cows"
+      expect(page).to_not have_link "Edit"
+      expect(page).to_not have_link "Delete"
+      expect(page).to_not have_link "Add Cows"
     end
   end
 end

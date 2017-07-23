@@ -21,9 +21,9 @@ describe "Admin can visit Feeder Cows Index and See All" do
 
     click_link('Delete', match: :first)
 
-    expect(current_path).to eq admin_feeder_cows
-    expect(page).to have_content feeder_cow_two.name
-    expect(page).to have_link "Add Cows"
+    expect(current_path).to eq feeder_cows_path
+    expect(page).to have_content feeder_cow_two.tag_number
+    expect(page).to have_button "Add New Cow"
     expect(page).to have_link "Edit"
     expect(page).to have_link "Delete"
 
@@ -45,9 +45,9 @@ describe "Admin can visit Feeder Cows Index and See All" do
 
       expect(page).to have_link("#{feeder_cow.residence.name}")
       expect(page).to have_content("#{feeder_cow.tag_number}")
-      expect(page).to not_have "Edit"
-      expect(page).to not_have "Delete"
-      expect(page).to not_have "Add Cow/s"
+      expect(page).to_not have_link "Edit"
+      expect(page).to_not have_link "Delete"
+      expect(page).to_not have_link "Add Cow/s"
     end
   end
 end
