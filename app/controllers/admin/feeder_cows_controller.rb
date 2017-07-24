@@ -14,7 +14,7 @@ class Admin::FeederCowsController < Admin::AdminController
       flash[:notice] = "Feeder Cow #{@feeder_cow.tag_number} created"
       redirect_to feeder_cows_path
     else
-      flas[:notice] = "Try again #{current_user.name}"
+      flash[:notice] = "Try again #{current_user.name}"
       render :new
     end
   end
