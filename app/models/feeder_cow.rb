@@ -9,9 +9,7 @@ class FeederCow < ApplicationRecord
   enum life_status: [:alive, :dead]
 
 
-def all_max_weight_cows
-  
-end
+
 
 
 private

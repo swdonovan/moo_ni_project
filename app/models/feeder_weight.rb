@@ -63,4 +63,8 @@ private
   def self.min_working_weight_numb
     self.all_working_weights.minimum(:weight)
   end
+
+  def self.all_max_working_weight_cows
+    self.all_working_weights.where(weight: FeederWeight.max_working_weight_numb)
+  end
 end

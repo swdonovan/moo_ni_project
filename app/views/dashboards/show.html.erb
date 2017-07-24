@@ -36,27 +36,15 @@
       </tr>
     </thead>
     <tbody>
+      <% FeederWeight.all_max_working_weight_cows.each do |weight| %>
       <tr>
-        <td>1,002</td>
-        <td>amet</td>
-        <td>consectetur</td>
-        <td>adipiscing</td>
-        <td>elit</td>
+          <td>Tag Number - <%= FeederCow.find(weight.feeder_cow_id).tag_number %></td>
+          <td>Description - Black WHT Face</td>
+          <td>Weight - <%= weight.weight %></td>
+          <td><%= FeederCow.find(weight.feeder_cow_id).residence.name %></td>
+          <td><%= ((weight.weight).to_f / (FeederWeight.all_incoming_weights.where(feeder_cow_id: weight.feeder_cow_id).first.weight).to_f).round(2) %>%</td>
       </tr>
-      <tr>
-        <td>1,002</td>
-        <td>amet</td>
-        <td>consectetur</td>
-        <td>adipiscing</td>
-        <td>elit</td>
-      </tr>
-      <tr>
-        <td>1,003</td>
-        <td>Integer</td>
-        <td>nec</td>
-        <td>odio</td>
-        <td>Praesent</td>
-      </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
