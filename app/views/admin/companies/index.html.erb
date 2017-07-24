@@ -1,8 +1,8 @@
 <h1>Company List</h1>
-
-<% @companies.each do |company| %>
-<%= link_to company.name, admin_company_path(company) %>
-<% end %>
-
+<ul>
+  <% @companies.each do |company| %>
+  <li><%= link_to company.name, admin_company_path(company) %></li>
+  <% end %>
+</ul>
 
 <%= link_to "Enter a new company", new_admin_company_path %>
