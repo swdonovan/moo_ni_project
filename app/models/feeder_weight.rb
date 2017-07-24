@@ -17,7 +17,7 @@ private
   end
 
   def self.group_numbers_by_weights
-    self.group(:weight).order('count_id asc').count('id').reverse
+    self.group(:weight).order('count_id asc').count('id')
   end
 
   def self.max_weight
