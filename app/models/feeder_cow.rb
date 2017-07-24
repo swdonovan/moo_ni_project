@@ -9,12 +9,14 @@ class FeederCow < ApplicationRecord
   enum life_status: [:alive, :dead]
 
 
-  def weight_gain
-    @all.group(:id).
-  end
+def all_max_weight_cows
+  
+end
 
-  def self.percent_find(weights)
-    difference = ((weights.working.last.weight) - (weights.incoming.first.weight))
-    percent = (difference.to_f / weights.incoming.first.weight.to_f)
+
+private
+
+  def group_all_weights_as_objects
+    @all_grouped = FeederCow.joins(:feeder_weights).group_by(&:feeder_weights)
   end
 end
